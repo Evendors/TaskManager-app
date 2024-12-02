@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="./frontend/styles/styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+    
+      <nav>
+        <img 
+        src="https://files.oaiusercontent.com/file-UxxSnF9NpUokPpkfsqMf13?se=2024-12-02T05%3A53%3A05Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da1944776-25e7-4fdd-b29a-8cf1dd8a7fa9.webp&sig=zPngKC45S%2BM4ZQV9ybl6Nb6VX7rAXM9pelPhFyGMbuw%3D" 
+        alt="Task Manager Logo" 
+        style="height: 50px; width: auto; margin-right: 10px; border-radius: 25px;" 
+      />
+      
+        <h1>Timothy Ignatius Agbor</h1>
+        <h1>Fellow ID: FE/23/43742157</h1>
+        <ul>
+          <li><a href="task.html">Task</a></li>
+          <li><a href="login.html">login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="left">
+        <img
+          style="height: 100px; width: 100px; border-radius: 50px"
+          src="https://lh3.googleusercontent.com/a/ACg8ocK4ZTq-NP8qakNvmpa3VUDR7UgA2SCu1MhHvHXfKx0qfc4LE1V9=s288-c-no"
+          alt="Timothy image"
+        />
+        <p>
+          Welcome to   <strong>Task Manager</strong><br />
+       <h1>   Add a new task below</h1>
+        </p>
+        <form id="taskForm">
+          <input type="text" id="taskTitle" placeholder="Task title" />
+          <input type="text" id="taskDesc" placeholder="Task description" />
+          <select name="priority" id="priority" title="select">
+            <option disabled selected>Select Task Priority</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+
+          <div>
+            <label for="deadline">Deadline:</label>
+            <input type="date" name="deadline" id="deadline" />
+          </div>
+          <button type="submit" id="add">Add Task</button>
+        </form>
+
+        <button class="logOut">Log Out</button>
+      </div>
+      <div class="right">
+        <h2>All Tasks</h2>
+<!-- Filtering and Searching -->
+<div class="taskFilters">
+  <input
+    type="text"
+    id="searchTasks"
+    placeholder="Search tasks by title..."
+  />
+  <select id="filterPriority" title="filterPriority">
+    <option value="" selected>Filter by Priority</option>
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+  </select>
+  <button id="clearFilters">Clear Filters</button>
+</div>
+
+        <div class="allTasks">
+          <!-- Task Added will show Here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Task Manager by Timothy Ignatius Agbor. All rights reserved.</p>
+    </footer>
+
+    <script src="./frontend/js/app.js"></script>
+  </body>
+</html>

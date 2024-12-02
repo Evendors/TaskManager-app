@@ -4,19 +4,13 @@ const password = document.getElementById("password");
 const btn = document.getElementById("btn");
 
 btn.addEventListener("click", (e) => {
-  // Prevent default button functionality
+  // presvent default button functionality
   e.preventDefault();
 
-  // Get user input values
-  const usernameValue = username.value;
+  // get user input values
   const emailValue = email.value;
   const passwordValue = password.value;
-
-  // Basic validation
-  if (!usernameValue || !emailValue || !passwordValue) {
-    alert("Please fill in all fields");
-    return;
-  }
+  const usernameValue = username.value;
 
   // Create the payload
   const registerData = {
@@ -25,7 +19,8 @@ btn.addEventListener("click", (e) => {
     password: passwordValue,
   };
 
-  // Make a POST request to the register API endpoint
+  // make a POST request to the register API endpoint
+
   fetch("http://localhost:3000/api/auth/register", {
     method: "POST",
     headers: {
@@ -38,9 +33,7 @@ btn.addEventListener("click", (e) => {
       if (response.ok) {
         return response.json();
       }
-      return response.json().then((errorData) => {
-        throw new Error(errorData.message || "Registration failed");
-      });
+      throw new Error("Registration failed");
     })
     .then((data) => {
       console.log("Registration successful:", data);
@@ -49,6 +42,6 @@ btn.addEventListener("click", (e) => {
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert(`There was an error registering you in: ${error.message}`);
+      alert("There was an error registering you in.");
     });
 });

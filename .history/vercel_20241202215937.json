@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "./backend/",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "build"
+        }
+      },
+      {
+        "src": "backend/index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "backend/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/frontend/$1"
+      }
+    ],
+    "env": {
+      "MONGO_URI": "mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "JWT_SECRET": "mySuperSecretPrivateKey123!"
+    }
+  }
+  

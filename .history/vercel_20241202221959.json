@@ -5,6 +5,7 @@
         "src": "frontend/index.html",
         "use": "@vercel/static"
       },
+      },
       {
         "src": "backend/index.js",
         "use": "@vercel/node"
@@ -17,12 +18,12 @@
       },
       {
         "src": "/(.*)",
-        "dest": "frontend/$1"
+        "dest": "/frontend/$1"
       }
     ],
     "env": {
-      "JWT_SECRET": "mySuperSecretPrivateKey123!", 
-      "MONGO_URI": "mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      "MONGO_URI": "mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "JWT_SECRET": "mySuperSecretPrivateKey123!"
     }
   }
   

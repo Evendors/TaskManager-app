@@ -1,4 +1,5 @@
 {
+  {
     "version": 2,
     "builds": [
       {
@@ -21,8 +22,8 @@
       }
     ],
     "env": {
-      "JWT_SECRET": "mySuperSecretPrivateKey123!", 
-      "MONGO_URI": "mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      "MONGO_URI": "mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "JWT_SECRET": "mySuperSecretPrivateKey123!"
     }
   }
   

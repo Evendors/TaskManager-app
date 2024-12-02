@@ -31,6 +31,7 @@ Clone this repository:
 
 ```bash
 git clone https://github.com/Cryptim/TASKMASTER.git
-# MONGO_URI="mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+<!-- # MONGO_URI="mongodb+srv://userone:eF5RNaTWzX5TfJg4@cluster0.bywvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # JWT_SECRET="mySuperSecretPrivateKey123!"
-# PORT=3000
+# PORT=3000-->

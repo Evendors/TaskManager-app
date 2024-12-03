@@ -21,6 +21,8 @@ const clearFilters = document.getElementById("clearFilters");
 
 let tasksFromServer = [];
 
+const BASE_URL = "https://taskmanager-app-4eme.onrender.com";
+
 // Function to render tasks
 function renderTasks(tasks) {
   allTasks.innerHTML = ""; // Clear current tasks
@@ -57,7 +59,7 @@ function renderTasks(tasks) {
 
 // Fetch tasks from the server
 function fetchTasks() {
-  fetch("http://localhost:3000/api/tasks/get-tasks", {
+  fetch(`${BASE_URL}/api/tasks/get-tasks`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -101,7 +103,7 @@ add.addEventListener("click", (e) => {
     deadline: new Date(deadline.value),
   };
 
-  fetch("http://localhost:3000/api/tasks/create", {
+  fetch(`${BASE_URL}/api/tasks/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -129,12 +131,12 @@ add.addEventListener("click", (e) => {
       alert("There was an error creating the task.");
     });
 });
+
 // Handle logout
 const logOutButton = document.querySelector(".logOut");
 
 logOutButton.addEventListener("click", () => {
-  // Make a request to the server to log the user out
-  fetch("http://localhost:3000/api/auth/logout", {
+  fetch(`${BASE_URL}/api/auth/logout`, {
     method: "POST", // Assuming your API expects a POST request for logout
     headers: {
       "Content-Type": "application/json",
@@ -149,8 +151,7 @@ logOutButton.addEventListener("click", () => {
     })
     .then((data) => {
       console.log("Logout successful", data);
-      // Redirect to login page after successful logout
-      window.location.href = "login.html";
+      window.location.href = "login.html"; // Redirect to login page after successful logout
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -162,13 +163,11 @@ logOutButton.addEventListener("click", () => {
 function editTask(taskId) {
   const taskToEdit = tasksFromServer.find((task) => task._id === taskId);
 
-  // Pre-populate input fields with current task data
   title.value = taskToEdit.title;
   desc.value = taskToEdit.description;
   priority.value = taskToEdit.priority;
   deadline.value = new Date(taskToEdit.deadline).toISOString().split("T")[0];
 
-  // Update task on form submission
   add.removeEventListener("click", createTask); // Ensure no duplicate listeners
   add.addEventListener("click", (e) => {
     e.preventDefault();
@@ -190,7 +189,7 @@ function editTask(taskId) {
       deadline: new Date(deadline.value),
     };
 
-    fetch(`http://localhost:3000/api/tasks/update/${taskId}`, {
+    fetch(`${BASE_URL}/api/tasks/update/${taskId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -224,7 +223,7 @@ function editTask(taskId) {
 function deleteTask(taskId) {
   const confirmation = confirm("Are you sure you want to delete this task?");
   if (confirmation) {
-    fetch(`http://localhost:3000/api/tasks/delete/${taskId}`, {
+    fetch(`${BASE_URL}/api/tasks/delete/${taskId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

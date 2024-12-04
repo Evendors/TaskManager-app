@@ -3,14 +3,17 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const btn = document.getElementById("btn");
 
+// Define the base URL for the backend API
+const BASE_URL = "https://taskmanager-app-4eme.onrender.com";
+
 btn.addEventListener("click", (e) => {
   // Prevent default button functionality
   e.preventDefault();
 
   // Get user input values
-  const usernameValue = username.value;
-  const emailValue = email.value;
-  const passwordValue = password.value;
+  const usernameValue = username.value.trim();
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
 
   // Basic validation
   if (!usernameValue || !emailValue || !passwordValue) {
@@ -26,7 +29,7 @@ btn.addEventListener("click", (e) => {
   };
 
   // Make a POST request to the register API endpoint
-  fetch("http://localhost:3000/api/auth/register", {
+  fetch(`${BASE_URL}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -38,17 +41,19 @@ btn.addEventListener("click", (e) => {
       if (response.ok) {
         return response.json();
       }
+      // Handle error response
       return response.json().then((errorData) => {
         throw new Error(errorData.message || "Registration failed");
       });
     })
     .then((data) => {
       console.log("Registration successful:", data);
-      alert("Registration successful");
+      alert("Registration successful!");
+      // Redirect to the login page
       window.location.href = "login.html";
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert(`There was an error registering you in: ${error.message}`);
+      alert(`There was an error registering you: ${error.message}`);
     });
 });
